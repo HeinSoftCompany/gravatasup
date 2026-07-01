@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Gravatá Suplementos: monte seu pedido de suplementos, veja o total automaticamente e envie direto pelo WhatsApp."
+    />
+    <meta property="og:title" content="Gravatá Suplementos" />
+    <meta
+      property="og:description"
+      content="Whey, creatina, vitaminas, pré-treino e suplementos com pedido direto pelo WhatsApp."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#ff7a1a" />
+    <title>Gravatá Suplementos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main class="app">
+      <section
+        class="screen active"
+        id="homeScreen"
+        aria-label="Página inicial"
+      >
+        <header class="header">
+          <div class="brand-area">
+            <div class="brand-mark">
+              <img
+                src="/assets/logo gravatasuplementos.svg"
+                alt="Logo Gravatá Suplementos"
+              />
+            </div>
+            <div>
+              <small>Localizado em Gravatá, PE</small>
+              <strong>Gravatá Suplementos</strong>
+            </div>
+          </div>
+
+          <button
+            class="menu-btn"
+            id="openSheet"
+            aria-label="Abrir menu rápido"
+          >
+            ☰
+          </button>
+        </header>
+
+        <div class="search-area">
+          <label class="search-box" for="searchInput">
+            <span aria-hidden="true">⌕</span>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Buscar whey, creatina, vitaminas..."
+              autocomplete="off"
+            />
+          </label>
+        </div>
+        <!--Seção carroussel-->
+        <section class="hero-slider" aria-label="Destaques da loja">
+          <article class="hero-slide active">
+            <div class="hero-content">
+              <small>Performance e saúde</small>
+              <h1>Suplementos para sua rotina render mais</h1>
+              <button type="button" data-action="scroll-products">
+                Ver produtos
+              </button>
+            </div>
+            <div class="hero-badge">WHEY</div>
+          </article>
+
+          <article class="hero-slide offer-slide">
+            <div class="hero-content">
+              <small>Pedido direto no WhatsApp</small>
+              <h1>Monte o carrinho e envie tudo organizado</h1>
+              <button type="button" data-action="go-orders">
+                Fazer pedido
+              </button>
+            </div>
+            <div class="hero-badge">CREATINA</div>
+          </article>
+
+          <article class="hero-slide">
+            <div class="hero-content">
+              <small>Melhor preço e atendimento</small>
+              <h1>Confira ofertas e produtos disponíveis</h1>
+              <button type="button" data-action="show-offers">
+                Ver ofertas
+              </button>
+            </div>
+            <div class="hero-badge">15%OFF</div>
+          </article>
+        </section>
+
+        <div class="dots" aria-hidden="true">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+
+        <nav class="tabs" id="categoryTabs" aria-label="Categorias de produtos">
+          <button type="button" class="active" data-category="todos">
+            Mais pedidos
+          </button>
+          <button type="button" data-category="whey">Whey</button>
+          <button type="button" data-category="creatina">Creatina</button>
+          <button type="button" data-category="suplementos">Suplementos</button>
+        </nav>
+
+        <section
+          class="products"
+          id="productsGrid"
+          aria-label="Produtos disponíveis"
+        ></section>
+        <p class="no-result" id="noResult">Nenhum produto encontrado.</p>
+      </section>
+
+      <section class="screen" id="ordersScreen" aria-label="Meus pedidos">
+        <header class="page-header">
+          <button
+            class="back-btn"
+            id="backHome"
+            type="button"
+            aria-label="Voltar para o início"
+          >
+            ‹
+          </button>
+          <h1 class="page-title">Meus Pedidos</h1>
+          <button
+            class="menu-btn"
+            id="openSheetOrders"
+            type="button"
+            aria-label="Abrir menu rápido"
+          >
+            ⋮
+          </button>
+        </header>
+
+        <section
+          class="cart-list"
+          id="cartContent"
+          aria-label="Itens do pedido"
+        ></section>
+
+        <section class="checkout-box">
+          <h2>Dados para pedido</h2>
+
+          <div class="form-group">
+            <label for="clientName">Nome do responsável</label>
+            <input
+              type="text"
+              id="clientName"
+              placeholder="Digite seu nome"
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="clientPlace">Retirada ou local de entrega</label>
+            <input
+              type="text"
+              id="clientPlace"
+              placeholder="Ex: Retirada na loja, academia, casa, trabalho..."
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="clientCity">Cidade / região</label>
+            <select id="clientCity">
+              <option value="">Selecione sua cidade</option>
+              <option value="Gravatá">Gravatá</option>
+              <!--
+              Cidades não selecionadas
+              <option value="Chã Grande">Chã Grande</option>
+              <option value="Bezerros">Bezerros</option>
+              <option value="Outra região">Outra região</option>
+              -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="clientNote">Observação</label>
+            <textarea
+              id="clientNote"
+              placeholder="Ex: sabor baunilha, retirar hoje, confirmar disponibilidade..."
+            ></textarea>
+          </div>
+        </section>
+
+        <section class="summary" aria-label="Resumo do pedido">
+          <div class="summary-row">
+            <span>Itens</span>
+            <strong id="summaryItems">0</strong>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <strong id="summaryTotal">R$ 0,00</strong>
+          </div>
+        </section>
+
+        <button class="send-btn" id="sendWhatsapp" type="button">
+          Enviar pedido no WhatsApp
+        </button>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button class="nav-item active" id="homeNav" type="button">
+        <span aria-hidden="true">🏠</span>
+        Início
+      </button>
+      <button class="nav-item" id="ordersNav" type="button">
+        <span aria-hidden="true">🛒</span>
+        Pedidos
+        <small class="cart-count" id="cartCount">0</small>
+      </button>
+    </nav>
+
+    <section class="bottom-sheet" id="bottomSheet" aria-label="Menu rápido">
+      <div class="sheet-line"></div>
+      <h2>Menu rápido</h2>
+      <button class="sheet-option" type="button" data-action="scroll-products">
+        Produtos disponíveis
+      </button>
+      <button class="sheet-option" type="button" data-action="show-offers">
+        Ofertas e promoções
+      </button>
+      <button class="sheet-option" type="button" data-action="go-orders">
+        Pedidos pelo WhatsApp
+      </button>
+    </section>
+
+    <div class="overlay" id="overlay"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
